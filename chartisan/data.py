@@ -12,7 +12,7 @@ class ChartData:
         """
         Creates a new chart data instance.
         """
-        self.labels: List[int] = []
+        self.labels: List[float] = []
         self.extra: Optional[Dict[str, Any]] = None
 
 
@@ -21,7 +21,7 @@ class DatasetData:
     Represents the dataset information.
     """
 
-    def __init__(self, name: str, values: List[int], extra: Optional[Dict[str, Any]]) -> DatasetData:
+    def __init__(self, name: str, values: List[float], extra: Optional[Dict[str, Any]]) -> DatasetData:
         """
         Creates a new instance of DatasetData.
         """

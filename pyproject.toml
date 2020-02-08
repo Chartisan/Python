@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "chartisan"
-version = "1.0.0"
+version = "1.1.0"
 description = "Chartisan's Python backend"
 authors = ["Erik Campobadal <soc@erik.cat>"]
 

@@ -37,7 +37,7 @@ class Chartisan:
         self._serverData.chart.extra = extra
         return self
 
-    def advancedDataset(self, name: str, values: List[int], extra: Optional[Dict[str, Any]]) -> Chartisan:
+    def advancedDataset(self, name: str, values: List[float], extra: Optional[Dict[str, Any]]) -> Chartisan:
         """
         AdvancedDataset appends a new dataset to the chart or modifies an existing one.
         If the ID has already been used, the dataset will be replaced with this one.
@@ -53,7 +53,7 @@ class Chartisan:
         dataset.extra = extra
         return self
 
-    def dataset(self, name: str, values: List[int]) -> Chartisan:
+    def dataset(self, name: str, values: List[float]) -> Chartisan:
         """"
         Dataset adds a new simple dataset to the chart. If more advanced control is
         needed, consider using `AdvancedDataset` instead.
@@ -77,7 +77,7 @@ class Chartisan:
         """
         return self._serverData
 
-    def _getOrCreateDataset(self, name: str, values: List[int], extra: Optional[Dict[str, Any]]) -> Tuple[DatasetData, bool]:
+    def _getOrCreateDataset(self, name: str, values: List[float], extra: Optional[Dict[str, Any]]) -> Tuple[DatasetData, bool]:
         """
         Returns a dataset from the chart or creates a new one given the data.
         """
