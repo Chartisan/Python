@@ -42,15 +42,13 @@ class Chartisan:
         AdvancedDataset appends a new dataset to the chart or modifies an existing one.
         If the ID has already been used, the dataset will be replaced with this one.
         """
-        (dataset, isNew) = self._getOrCreateDataset(name, values, extra)
-        if isNew:
-            # Append the new dataset.
-            self._serverData.datasets.append(dataset)
-            return self
-        # Modify the existing dataset.
-        dataset.name = name
-        dataset.values = values
-        dataset.extra = extra
+        dataset = self._getDataset(name)
+        if dataset:
+            dataset.name = name
+            dataset.values = values
+            dataset.extra = extra
+        else:
+            self._serverData.datasets.append(DatasetData(name, values, extra))
         return self
 
     def dataset(self, name: str, values: List[float]) -> Chartisan:
@@ -58,8 +56,7 @@ class Chartisan:
         Dataset adds a new simple dataset to the chart. If more advanced control is
         needed, consider using `AdvancedDataset` instead.
         """
-        self.advancedDataset(name, values, None)
-        return self
+        return self.advancedDataset(name, values, None)
 
     def toJSON(self) -> str:
         """
@@ -77,11 +74,11 @@ class Chartisan:
         """
         return self._serverData
 
-    def _getOrCreateDataset(self, name: str, values: List[float], extra: Optional[Dict[str, Any]]) -> Tuple[DatasetData, bool]:
+    def _getDataset(self, name: str) -> Optional[DatasetData]:
         """
-        Returns a dataset from the chart or creates a new one given the data.
+        Gets the dataset with the given name.
         """
         for dataset in self._serverData.datasets:
             if dataset.name == name:
-                return (dataset, False)
-        return (DatasetData(name, values, extra), True)
+                return dataset
+        return None
