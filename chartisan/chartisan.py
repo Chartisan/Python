@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from json import dumps
 from .data import ServerData, DatasetData
-from typing import List, Optional, Dict, Any, Tuple
+from typing import List, Optional, Dict, Tuple
 
 
 class Chartisan:
@@ -30,14 +30,14 @@ class Chartisan:
         self._serverData.chart.labels = labels
         return self
 
-    def extra(self, extra: Dict[str, Any]) -> Chartisan:
+    def extra(self, extra: Dict[str, str]) -> Chartisan:
         """
         Adds extra information to the chart.
         """
         self._serverData.chart.extra = extra
         return self
 
-    def advancedDataset(self, name: str, values: List[float], extra: Optional[Dict[str, Any]]) -> Chartisan:
+    def advancedDataset(self, name: str, values: List[float], extra: Optional[Dict[str, str]]) -> Chartisan:
         """
         AdvancedDataset appends a new dataset to the chart or modifies an existing one.
         If the ID has already been used, the dataset will be replaced with this one.
@@ -52,7 +52,7 @@ class Chartisan:
         return self
 
     def dataset(self, name: str, values: List[float]) -> Chartisan:
-        """"
+        """
         Dataset adds a new simple dataset to the chart. If more advanced control is
         needed, consider using `AdvancedDataset` instead.
         """

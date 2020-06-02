@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict
 
 
 class ChartData:
@@ -13,7 +13,7 @@ class ChartData:
         Creates a new chart data instance.
         """
         self.labels: List[float] = []
-        self.extra: Optional[Dict[str, Any]] = None
+        self.extra: Optional[Dict[str, str]] = None
 
 
 class DatasetData:
@@ -21,7 +21,7 @@ class DatasetData:
     Represents the dataset information.
     """
 
-    def __init__(self, name: str, values: List[float], extra: Optional[Dict[str, Any]]) -> DatasetData:
+    def __init__(self, name: str, values: List[float], extra: Optional[Dict[str, str]]) -> DatasetData:
         """
         Creates a new instance of DatasetData.
         """
